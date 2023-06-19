@@ -1,0 +1,90 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "enabledManagers": ["regex"],
+  "prHourlyLimit": 0,
+  "branchConcurrentLimit": 0,
+  "recreateClosed": true,
+  "separateMinorPatch": true,
+  "baseBranches": ["renovate-updates-collection"],
+  "branchPrefix": "renovate-update/",
+  "prHeader" : "Renovate automatic update MR",
+  "prBodyNotes": ["{{#if isMajor}}:warning: MAJOR MAJOR MAJOR :warning:{{/if}}"],
+  "prBodyDefinitions": {
+    "Package": "{{{depNameLinked}}}",
+    "Type": "{{{depType}}}",
+    "Update": "{{{updateType}}}",
+    "Current value": "{{{currentValue}}}",
+    "New value": "{{{newValue}}}",
+    "Change": "`{{{displayFrom}}}` -> `{{{displayTo}}}`",
+    "Pending": "{{{displayPending}}}",
+    "References": "{{{references}}}",
+    "Package file": "{{{packageFile}}}"
+  },
+  "prBodyColumns": [
+    "Package",
+    "Type",
+    "Update",
+    "Change",
+    "Pending",
+    "References",
+    "Package file"
+  ],
+  "prBodyTemplate": "This MR has been created by Renovate to update versions of used images etc. \n {{{header}}}{{{table}}}{{{warnings}}}{{{controls}}}{{{footer}}}" ,
+  "packageRules": [
+    {
+      "matchManagers": ["regex"],
+      "description": "Crete merge reqests for minor changes in imagevector.yaml file",
+      "matchUpdateTypes": ["minor"],
+      "groupName": ["Upstream images - minor updates"],
+      "automerge": false,
+      "enabled": true
+    },
+    {
+      "matchManagers": ["regex"],
+      "description": "Crete merge reqests for patch changes in imagevector.yaml file",
+      "matchUpdateTypes": ["patch"],
+      "groupName": ["Upstream images - patch updates"],
+      "automerge": false,
+      "enabled": true
+    },
+    {
+      "matchManagers": ["regex"],
+      "description": "Disable merge reqests for major release changes in imagevector.yaml file",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "enabled": false
+    },
+    {
+      "matchManagers": ["regex"],
+      "description": "Disable merge reqests for GO minor release changes in imagevector.yaml file",
+      "matchUpdateTypes": ["minor"],
+      "automerge": false,
+      "enabled": false,
+      "matchPackagePatterns": ["^go"]
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/|\\.)imagevector\\.yaml$"],
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "- name:\\s*(?<depName>.*)\\s*repository:\\s*(?<datasource>.*)\\s*tag:\\s*(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)\\s"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    },
+    {
+      "fileMatch": ["(^|/|\\.)imagevector\\.yaml$"],
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "- name:\\s*(?<depName>.*)\\s*repository:\\s*(?<datasource>.*)\\s*tag:\\s*(?<currentValue>.*)\\s*"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    }
+  ]
+}
+
