@@ -2,13 +2,4 @@ images:
   - name: busybox
     repository: docker.io/library
     tag: 1.36.1-uclibc
-  - name: golang
-    repository: docker.io/library
-    tag: 1.17.2-alpine3.16
-  - name: golang
-    repository: docker.io/library
-    tag: 1.18.9-alpine3.17
-  - name: golang
-    repository: docker.io/library
-    tag: 1.19.1-alpine3.17
 
