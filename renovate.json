@@ -7,7 +7,6 @@
   "recreateClosed": true,
   "separateMinorPatch": true,
   "baseBranches": ["renovate-updates-collection"],
-  "useBaseBranchConfig": "merge",
   "branchPrefix": "renovate-update/",
   "prHeader" : "Renovate automatic update MR",
   "prBodyNotes": ["{{#if isMajor}}:warning: MAJOR MAJOR MAJOR :warning:{{/if}}"],
