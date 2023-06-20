@@ -4,4 +4,4 @@ images:
     tag: 1.36.1-uclibc
   - name: busybox
     repository: docker.io/library
-    tag: 1.34.0-uclibc
+    tag: 1.36.1-uclibc
