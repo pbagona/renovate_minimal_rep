@@ -1,2 +1,2 @@
 # use nginx:stable as base
-FROM nginx:stable
+FROM nginx:1.25.0
