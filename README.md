@@ -12,11 +12,11 @@ Once renovate runs, job fails with `"msg": "Repository has unknown error"`
 This repository contains minimal reproduction of issue.
 
 Error is happening when Renovate job tries to run, with following settings(which reflect this repository setup):
-- "useBaseBranchConfig": "merge"
-- "enabledManagers": ["regex"], (set up to check file imagevector.yaml for dependencies)
-- imagevector.yaml is present in baseBranch
-- baseBranch renovate.json contains "packageRules": [] for regex manager
-- default (main) branch renovate.json does not contain "packageRules": [] for regex manager
+- `"useBaseBranchConfig": "merge"`
+- `"enabledManagers": ["regex"]`, (set up to check file imagevector.yaml for dependencies)
+- `imagevector.yaml` is present in baseBranch
+- baseBranch renovate.json contains `"packageRules": []` for regex manager
+- default (main) branch renovate.json does not contain `"packageRules": []` for regex manager
 
 Failed Renovate job ID: ff0e4d1f-744f-4307-a452-4d98e94df9d3
 
