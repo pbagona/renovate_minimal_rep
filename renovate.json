@@ -9,6 +9,16 @@
   "baseBranches": ["renovate-updates-collection"],
   "branchPrefix": "renovate-update-",
   "useBaseBranchConfig": "merge",
+  "packageRules": [
+    {
+      "matchManagers": ["regex"],
+      "description": "Crete merge reqests for minor changes in imagevector.yaml file",
+      "matchUpdateTypes": ["minor"],
+      "groupName": ["Upstream images - minor updates"],
+      "automerge": false,
+      "enabled": true
+    }
+  ],
   "regexManagers": [
     {
       "fileMatch": ["(^|/|\\.)imagevector\\.yaml$"],
@@ -21,4 +31,3 @@
     }
   ]
 }
-
