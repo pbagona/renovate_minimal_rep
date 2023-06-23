@@ -1,23 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-  "enabledManagers": ["regex"],
-  "recreateClosed": true,
-  "separateMinorPatch": true,
+  "extends": ["config:base"],
   "baseBranches": ["renovate-updates-collection"],
-  "branchPrefix": "renovate-update-",
-  "useBaseBranchConfig": "merge",
-  "regexManagers": [
-    {
-      "fileMatch": ["(^|/|\\.)imagevector\\.yaml$"],
-      "matchStringsStrategy": "recursive",
-      "matchStrings": [
-        "- name:\\s*(?<depName>.*)\\s*repository:\\s*(?<datasource>.*)\\s*tag:\\s*(?<currentValue>.*)\\s*"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    }
-  ]
+  "useBaseBranchConfig": "merge"
 }
