@@ -8,7 +8,7 @@ images:
     tag: 1.18.5-alpine3.17
   - name: golang
     repository: docker.io
-    tag: 1.19.8-alpine3.17
+    tag: 1.19.10-alpine3.17
   - name: alpine
     repository: docker.io
     tag: 3.17.3
