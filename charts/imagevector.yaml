@@ -11,5 +11,5 @@ images:
     tag: 1.19.8-alpine3.17
   - name: alpine
     repository: docker.io
-    tag: 3.17.3
+    tag: 3.19.0
 
